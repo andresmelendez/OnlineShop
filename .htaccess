@@ -1,0 +1,13 @@
+RewriteEngine On
+
+# Redirigir cualquier acceso a example.com/app a una página de error o a una URL específica
+RewriteRule ^adminsys$ /listing.php [L,R]
+
+# Quitar las extensiones .php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+# Redirigir desde app.example.com a app.example.com/login
+RewriteCond %{HTTP_HOST} ^adminsys\.ossadistribuciones\.com$ [NC]
+RewriteRule ^$ /login [L,R]
